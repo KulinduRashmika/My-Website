@@ -8,8 +8,9 @@
     :root {
       --bg: #000;
       --text: #eee;
-      --primary: #00ffff;   /* cyan glow */
-      --accent: #9933ff;    /* purple glow */
+      --primary: #00ffff;
+      --accent: #9933ff;
+      --highlight: #ff3333; /* red */
     }
     body {
       margin: 0;
@@ -18,10 +19,9 @@
       color: var(--text);
       overflow-y: auto;
       position: relative;
-      z-index: 0;
     }
 
-    /* Background animation (more stars) */
+    /* Background stars */
     body::before {
       content: '';
       position: fixed;
@@ -40,38 +40,33 @@
       background-repeat: repeat;
       animation: moveStars 40s linear infinite;
       z-index: -1;
-      pointer-events: none;
     }
 
     @keyframes moveStars {
-      from { transform: translate(0, 0); }
-      to { transform: translate(-50%, -50%); }
+      from { transform: translate(0,0); }
+      to { transform: translate(-50%,-50%); }
     }
 
     header {
       padding: 60px 20px;
       text-align: center;
-      position: relative;
-      z-index: 1;
+      animation: fadeIn 2s ease-in-out;
     }
     header h1 {
       font-size: 3em;
-      color: var(--primary);
-      /* Reduced glow */
-      text-shadow: 0 0 5px var(--primary);
+      color: var(--highlight);
+      text-shadow: 0 0 8px var(--highlight);
+      animation: glowPulse 2s infinite alternate;
       margin: 0;
     }
     header p {
       font-size: 1.3em;
       color: var(--accent);
-      /* Reduced glow */
       text-shadow: 0 0 4px var(--accent);
-      margin: 10px 0;
     }
     .typing {
       font-size: 1.5em;
       color: var(--primary);
-      /* Reduced glow */
       text-shadow: 0 0 5px var(--primary);
       min-height: 1.5em;
     }
@@ -80,8 +75,6 @@
       max-width: 1000px;
       margin: 30px auto;
       padding: 0 20px;
-      position: relative;
-      z-index: 1;
     }
     .card {
       background: rgba(255,255,255,0.05);
@@ -90,20 +83,20 @@
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(0,255,255,0.15);
       backdrop-filter: blur(10px);
-      animation: fadeInUp 1s forwards;
       opacity: 0;
       transform: translateY(30px);
+      animation: fadeInUp 1s forwards;
     }
     .card:nth-child(1) { animation-delay: 0.3s; }
     .card:nth-child(2) { animation-delay: 0.6s; }
     .card:nth-child(3) { animation-delay: 0.9s; }
 
     h2 {
-      color: var(--primary);
-      /* Reduced glow */
-      text-shadow: 0 0 5px var(--primary);
-      margin-top: 0;
+      color: var(--highlight);
+      text-shadow: 0 0 5px var(--highlight);
+      animation: float 3s ease-in-out infinite alternate;
     }
+
     ul {
       list-style: none;
       padding: 0;
@@ -117,13 +110,14 @@
       border-radius: 8px;
       text-align: center;
       color: var(--primary);
-      /* Reduced glow */
       text-shadow: 0 0 3px var(--primary);
       transition: transform 0.3s;
+      animation: fadeIn 2s ease-in-out;
     }
     ul li:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
+
     form {
       display: flex;
       flex-direction: column;
@@ -138,29 +132,31 @@
       color: var(--text);
     }
     form button {
-      background: var(--accent);
+      background: var(--highlight);
       color: #fff;
       padding: 12px;
       font-size: 1em;
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      box-shadow: 0 0 10px var(--accent);
+      box-shadow: 0 0 10px var(--highlight);
       transition: transform 0.3s, box-shadow 0.3s;
     }
     form button:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px var(--accent);
+      box-shadow: 0 0 20px var(--highlight);
     }
+
     .contact-box {
       text-align: center;
-      background: rgba(153,51,255,0.2);
+      background: rgba(255,51,51,0.2);
       padding: 15px;
       border-radius: 8px;
       margin-top: 20px;
-      color: var(--accent);
-      text-shadow: 0 0 6px var(--accent);
+      color: var(--highlight);
+      text-shadow: 0 0 5px var(--highlight);
     }
+
     .github-link {
       text-align: center;
       margin-top: 10px;
@@ -171,13 +167,12 @@
       font-weight: bold;
       text-shadow: 0 0 5px var(--primary);
     }
+
     footer {
       text-align: center;
       padding: 15px;
       font-size: 0.9em;
       color: #666;
-      position: relative;
-      z-index: 1;
     }
 
     @keyframes fadeInUp {
@@ -186,30 +181,45 @@
         transform: translateY(0);
       }
     }
+
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 5px var(--highlight); }
+      to { text-shadow: 0 0 20px var(--highlight); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Malavige Kulindu Rashmika</h1>
-    <p>Undergraduate Software Engineer | Colombo</p>
+    <p>Undergraduate Software Engineer | Colombo, Sri Lanka</p>
     <div class="typing" id="typing"></div>
   </header>
 
   <main>
     <div class="card">
       <h2>About Me</h2>
-      <p>Hi! I am Malavige Kulindu Rashmika from Colombo. I am passionate about building small and effective websites and applications. I'm currently an undergraduate student in Software Engineering.</p>
+      <p>I am from <span style="color:var(--highlight);">Sri Lanka</span>. I create small, effective websites and apps using JavaScript, React, C#, HTML, CSS, WordPress, MySQL, and phpMyAdmin. I’m passionate about tech and solving problems!</p>
     </div>
 
     <div class="card">
       <h2>What I Offer</h2>
       <ul>
         <li>Small website development</li>
-        <li>JavaScript applications</li>
-        <li>C# applications</li>
-        <li>HTML & CSS design</li>
-        <li>React apps</li>
+        <li>JavaScript & C# applications</li>
+        <li>HTML/CSS/React design</li>
         <li>WordPress (org) sites</li>
+        <li>MySQL / phpMyAdmin setup</li>
+        <li>Tech support for small businesses</li>
       </ul>
     </div>
 
@@ -223,23 +233,23 @@
       </form>
       <div class="contact-box">
         <p><strong>Need a small website or app?</strong></p>
-        <p>Contact me: +94 702002700</p>
+        <p>Call/WhatsApp: +94 702002700</p>
       </div>
       <div class="github-link">
-        <p>Check out my work on <a href="https://github.com/KulinduRashmika" target="_blank">GitHub</a></p>
+        <p>See my code on <a href="https://github.com/KulinduRashmika" target="_blank">GitHub</a></p>
       </div>
     </div>
   </main>
 
   <footer>
-    Powered by MKR + ChatGPT
+    Powered by MKR
   </footer>
 
   <script>
     const textArray = [
       "I build with JavaScript, C#, HTML, CSS...",
-      "React and WordPress development...",
-      "Contact me for your next small project!"
+      "React, WordPress, MySQL, phpMyAdmin...",
+      "From Sri Lanka — I deliver small business solutions!"
     ];
     let i = 0, j = 0;
     let currentText = '';
