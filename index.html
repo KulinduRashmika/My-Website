@@ -4,284 +4,325 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Malavige Kulindu Rashmika - Web Developer</title>
+
   <style>
     :root {
       --bg: #000;
       --text: #eee;
       --primary: #00ffff;
       --accent: #9933ff;
-      --highlight: #ff3333; /* red */
     }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--bg);
       color: var(--text);
       overflow-y: auto;
-      position: relative;
     }
 
-    /* Background stars */
     body::before {
       content: '';
       position: fixed;
-      top: 0; left: 0;
       width: 300%;
       height: 300%;
       background:
         radial-gradient(1.5px 1.5px at 10% 15%, var(--primary) 50%, transparent 50%),
         radial-gradient(2px 2px at 20% 30%, var(--primary) 50%, transparent 50%),
         radial-gradient(1.2px 1.2px at 35% 45%, var(--accent) 50%, transparent 50%),
-        radial-gradient(2px 2px at 50% 50%, var(--primary) 50%, transparent 50%),
-        radial-gradient(1px 1px at 60% 70%, var(--accent) 50%, transparent 50%),
-        radial-gradient(1.8px 1.8px at 70% 80%, var(--primary) 50%, transparent 50%),
-        radial-gradient(1.3px 1.3px at 80% 75%, var(--accent) 50%, transparent 50%),
-        radial-gradient(2px 2px at 90% 90%, var(--primary) 50%, transparent 50%);
-      background-repeat: repeat;
+        radial-gradient(2px 2px at 50% 50%, var(--primary) 50%, transparent 50%);
       animation: moveStars 40s linear infinite;
       z-index: -1;
     }
 
     @keyframes moveStars {
-      from { transform: translate(0,0); }
-      to { transform: translate(-50%,-50%); }
+      from { transform: translate(0, 0); }
+      to { transform: translate(-50%, -50%); }
     }
 
     header {
       padding: 60px 20px;
       text-align: center;
-      animation: fadeIn 2s ease-in-out;
     }
+
     header h1 {
       font-size: 3em;
-      color: var(--highlight);
-      text-shadow: 0 0 8px var(--highlight);
-      animation: glowPulse 2s infinite alternate;
+      color: var(--primary);
+      text-shadow: 0 0 6px var(--primary);
       margin: 0;
     }
+
     header p {
       font-size: 1.3em;
       color: var(--accent);
       text-shadow: 0 0 4px var(--accent);
     }
+
     .typing {
-      font-size: 1.5em;
+      font-size: 1.4em;
       color: var(--primary);
       text-shadow: 0 0 5px var(--primary);
       min-height: 1.5em;
     }
 
     main {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 20px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
     }
+
     .card {
       background: rgba(255,255,255,0.05);
       padding: 25px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(0,255,255,0.15);
       backdrop-filter: blur(10px);
+      animation: fadeInUp 1s forwards;
       opacity: 0;
       transform: translateY(30px);
-      animation: fadeInUp 1s forwards;
     }
-    .card:nth-child(1) { animation-delay: 0.3s; }
-    .card:nth-child(2) { animation-delay: 0.6s; }
-    .card:nth-child(3) { animation-delay: 0.9s; }
+
+    .card:nth-child(1) { animation-delay: .3s; }
+    .card:nth-child(2) { animation-delay: .6s; }
+    .card:nth-child(3) { animation-delay: .9s; }
+    .card:nth-child(4) { animation-delay: 1.2s; }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     h2 {
-      color: var(--highlight);
-      text-shadow: 0 0 5px var(--highlight);
-      animation: float 3s ease-in-out infinite alternate;
+      color: var(--primary);
+      text-shadow: 0 0 5px var(--primary);
+      margin-top: 0;
     }
 
-    ul {
+    /* SERVICES & SKILLS */
+    ul.skills {
       list-style: none;
       padding: 0;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 12px;
     }
-    ul li {
+
+    ul.skills li {
       background: rgba(0,255,255,0.1);
       padding: 12px;
       border-radius: 8px;
       text-align: center;
       color: var(--primary);
       text-shadow: 0 0 3px var(--primary);
-      transition: transform 0.3s;
-      animation: fadeIn 2s ease-in-out;
-    }
-    ul li:hover {
-      transform: scale(1.1);
     }
 
+    /* PROJECTS */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .project {
+      background: rgba(153,51,255,0.12);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 0 15px rgba(153,51,255,0.3);
+      transition: transform 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+    }
+
+    .project h3 {
+      color: var(--accent);
+      margin-top: 0;
+      text-shadow: 0 0 5px var(--accent);
+    }
+
+    .project p {
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    .project a {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0 0 4px var(--primary);
+    }
+
+    /* CONTACT */
     form {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
-    form input, form textarea {
+
+    input, textarea {
       padding: 12px;
-      font-size: 1em;
-      border: none;
       border-radius: 6px;
+      border: none;
       background: rgba(255,255,255,0.1);
       color: var(--text);
     }
-    form button {
-      background: var(--highlight);
-      color: #fff;
-      padding: 12px;
-      font-size: 1em;
+
+    button {
+      background: var(--accent);
       border: none;
+      padding: 12px;
       border-radius: 6px;
       cursor: pointer;
-      box-shadow: 0 0 10px var(--highlight);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    form button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px var(--highlight);
+      color: #fff;
+      box-shadow: 0 0 12px var(--accent);
     }
 
-    .contact-box {
-      text-align: center;
-      background: rgba(255,51,51,0.2);
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-      color: var(--highlight);
-      text-shadow: 0 0 5px var(--highlight);
-    }
-
-    .github-link {
-      text-align: center;
-      margin-top: 10px;
-    }
-    .github-link a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: bold;
-      text-shadow: 0 0 5px var(--primary);
+    button:hover {
+      box-shadow: 0 0 25px var(--accent);
     }
 
     footer {
       text-align: center;
       padding: 15px;
-      font-size: 0.9em;
       color: #666;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes glowPulse {
-      from { text-shadow: 0 0 5px var(--highlight); }
-      to { text-shadow: 0 0 20px var(--highlight); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes float {
-      from { transform: translateY(0); }
-      to { transform: translateY(-10px); }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Malavige Kulindu Rashmika</h1>
-    <p>Undergraduate Software Engineer | Colombo, Sri Lanka</p>
-    <div class="typing" id="typing"></div>
-  </header>
 
-  <main>
-    <div class="card">
-      <h2>About Me</h2>
-      <p>I am from <span style="color:var(--highlight);">Sri Lanka</span>. I create small, effective websites and apps using JavaScript, React, C#, HTML, CSS, WordPress, MySQL, and phpMyAdmin. I’m passionate about tech and solving problems!</p>
-    </div>
+<header>
+  <h1>Malavige Kulindu Rashmika</h1>
+  <p>Undergraduate Software Engineer | Colombo</p>
+  <div class="typing" id="typing"></div>
+</header>
 
-    <div class="card">
-      <h2>What I Offer</h2>
-      <ul>
-        <li>Small website development</li>
-        <li>JavaScript & C# applications</li>
-        <li>HTML/CSS/React design</li>
-        <li>WordPress (org) sites</li>
-        <li>MySQL / phpMyAdmin setup</li>
-        <li>Tech support for small businesses</li>
-      </ul>
-    </div>
+<main>
 
-    <div class="card">
-      <h2>Contact Me</h2>
-      <form action="mailto:kulindurashmika5@gmail.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-      <div class="contact-box">
-        <p><strong>Need a small website or app?</strong></p>
-        <p>Call/WhatsApp: +94 702002700</p>
+  <div class="card">
+    <h2>About Me</h2>
+    <p>
+      I am an undergraduate Software Engineering student passionate about
+      building clean, functional websites, mobile apps, and IoT-based systems.
+      I enjoy learning new technologies and delivering practical solutions.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>What I Offer</h2>
+    <ul class="skills">
+      <li>Website Development</li>
+      <li>React Applications</li>
+      <li>JavaScript Projects</li>
+      <li>C# Applications</li>
+      <li>WordPress Websites</li>
+      <li>Mobile App Development</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>My Projects</h2>
+
+    <div class="projects">
+
+      <div class="project">
+        <h3>Smart Harbor System (IoT)</h3>
+        <p>
+          IoT-based harbor management system using NodeMCU ESP8266 with RFID,
+          PIR, gas sensors and Firebase for real-time monitoring and safety.
+        </p>
       </div>
-      <div class="github-link">
-        <p>See my code on <a href="https://github.com/KulinduRashmika" target="_blank">GitHub</a></p>
+
+      <div class="project">
+        <h3>Mobile Food Ordering App</h3>
+        <p>
+          Android application developed using Java and SQLite with menu browsing,
+          cart system, secure payments, and order tracking.
+        </p>
       </div>
+
+      <div class="project">
+        <h3>Paradise Lanka Holidays</h3>
+        <p>
+          Fully customized WordPress website for a Sri Lankan travel company,
+          optimized for performance and responsive design.
+        </p>
+        <a href="https://paradiselkholidays.com/" target="_blank">Live Website</a>
+      </div>
+
+      <div class="project">
+        <h3>Omik Distribute Management System</h3>
+        <p>
+          Product, customer, and order management system improving business
+          workflow and data organization.
+        </p>
+        <a href="https://github.com/KulinduRashmika" target="_blank">View on GitHub</a>
+      </div>
+
     </div>
-  </main>
+  </div>
 
-  <footer>
-    Powered by MKR
-  </footer>
+  <div class="card">
+    <h2>Contact Me</h2>
 
-  <script>
-    const textArray = [
-      "I build with JavaScript, C#, HTML, CSS...",
-      "React, WordPress, MySQL, phpMyAdmin...",
-      "From Sri Lanka — I deliver small business solutions!"
-    ];
-    let i = 0, j = 0;
-    let currentText = '';
-    let isDeleting = false;
-    const typingEl = document.getElementById("typing");
+    <form action="mailto:kulindurashmika5@gmail.com" method="post" enctype="text/plain">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
 
-    function type() {
-      if (i < textArray.length) {
-        if (!isDeleting && j <= textArray[i].length) {
-          currentText = textArray[i].substring(0, j++);
-          typingEl.innerHTML = currentText;
-        }
-        if (isDeleting && j >= 0) {
-          currentText = textArray[i].substring(0, j--);
-          typingEl.innerHTML = currentText;
-        }
+    <p style="margin-top:15px;color:var(--accent);text-align:center;">
+      📞 +94 702002700 <br>
+      🔗 <a href="https://github.com/KulinduRashmika" target="_blank">GitHub Profile</a>
+    </p>
+  </div>
 
-        if (j === textArray[i].length) {
-          isDeleting = true;
-          setTimeout(type, 1500);
-          return;
-        }
+</main>
 
-        if (isDeleting && j === 0) {
-          isDeleting = false;
-          i = (i + 1) % textArray.length;
-        }
-        setTimeout(type, isDeleting ? 50 : 100);
-      }
+<footer>
+  Powered by MKR + ChatGPT
+</footer>
+
+<script>
+  const texts = [
+    "I build websites and applications",
+    "Full-stack & mobile development",
+    "Let’s build your next project"
+  ];
+
+  let i = 0, j = 0;
+  let deleting = false;
+  const typing = document.getElementById("typing");
+
+  function typeEffect() {
+    if (!deleting && j <= texts[i].length) {
+      typing.textContent = texts[i].substring(0, j++);
     }
 
-    type();
-  </script>
+    if (deleting && j >= 0) {
+      typing.textContent = texts[i].substring(0, j--);
+    }
+
+    if (j === texts[i].length) {
+      deleting = true;
+      setTimeout(typeEffect, 1200);
+      return;
+    }
+
+    if (deleting && j === 0) {
+      deleting = false;
+      i = (i + 1) % texts.length;
+    }
+
+    setTimeout(typeEffect, deleting ? 50 : 100);
+  }
+
+  typeEffect();
+</script>
+
 </body>
 </html>
