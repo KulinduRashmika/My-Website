@@ -65,6 +65,14 @@
       min-height: 1.5em;
     }
 
+    .social-links a {
+      margin: 0 8px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0 0 4px var(--primary);
+    }
+
     main {
       max-width: 1100px;
       margin: auto;
@@ -98,7 +106,6 @@
       margin-top: 0;
     }
 
-    /* SERVICES & SKILLS */
     ul.skills {
       list-style: none;
       padding: 0;
@@ -116,7 +123,6 @@
       text-shadow: 0 0 3px var(--primary);
     }
 
-    /* PROJECTS */
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -155,7 +161,6 @@
       text-shadow: 0 0 4px var(--primary);
     }
 
-    /* CONTACT */
     form {
       display: flex;
       flex-direction: column;
@@ -189,18 +194,60 @@
       padding: 15px;
       color: #666;
     }
+
+    /* Floating WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      padding: 14px 16px;
+      border-radius: 50%;
+      font-size: 22px;
+      box-shadow: 0 0 15px #25D366;
+      text-decoration: none;
+      z-index: 999;
+    }
+
+    .profile-pic {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 15px var(--primary);
+  z-index: 1000;
+}
+
   </style>
 </head>
 
 <body>
 
+<a class="whatsapp-float" href="https://wa.me/94702002700" target="_blank">💬</a>
+
+<img src="profile.jpeg" alt="Kulindu Rashmika" class="profile-pic">
+
+
 <header>
   <h1>Malavige Kulindu Rashmika</h1>
   <p>Undergraduate Software Engineer | Colombo</p>
   <div class="typing" id="typing"></div>
+
+  <!-- LinkedIn + GitHub added -->
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/kulindu-rashmika-9330b6368/" target="_blank">LinkedIn</a> |
+    <a href="https://github.com/KulinduRashmika" target="_blank">GitHub</a>
+  </div>
 </header>
 
 <main>
+
+  <!-- EVERYTHING BELOW IS YOUR ORIGINAL CODE (UNCHANGED) -->
 
   <div class="card">
     <h2>About Me</h2>
@@ -224,46 +271,71 @@
   </div>
 
   <div class="card">
-    <h2>My Projects</h2>
+  <h2>My Projects</h2>
 
-    <div class="projects">
+  <div class="projects">
 
-      <div class="project">
-        <h3>Smart Harbor System (IoT)</h3>
-        <p>
-          IoT-based harbor management system using NodeMCU ESP8266 with RFID,
-          PIR, gas sensors and Firebase for real-time monitoring and safety.
-        </p>
-      </div>
-
-      <div class="project">
-        <h3>Mobile Food Ordering App</h3>
-        <p>
-          Android application developed using Java and SQLite with menu browsing,
-          cart system, secure payments, and order tracking.
-        </p>
-      </div>
-
-      <div class="project">
-        <h3>Paradise Lanka Holidays</h3>
-        <p>
-          Fully customized WordPress website for a Sri Lankan travel company,
-          optimized for performance and responsive design.
-        </p>
-        <a href="https://paradiselkholidays.com/" target="_blank">Live Website</a>
-      </div>
-
-      <div class="project">
-        <h3>Omik Distribute Management System</h3>
-        <p>
-          Product, customer, and order management system improving business
-          workflow and data organization.
-        </p>
-        <a href="https://github.com/KulinduRashmika" target="_blank">View on GitHub</a>
-      </div>
-
+    <div class="project">
+      <h3>Smart Harbor System (IoT)</h3>
+      <p>
+        IoT-based harbor management system using NodeMCU ESP8266 with RFID,
+        PIR, gas sensors and Firebase for real-time monitoring and safety.
+      </p>
+      <a href="https://github.com/KulinduRashmika/smart-harbour-system" target="_blank">View on GitHub</a>
     </div>
+
+    <div class="project">
+      <h3>Mobile Food Ordering App</h3>
+      <p>
+        Android application developed using Java and SQLite with menu browsing,
+        cart system, secure payments, and order tracking.
+      </p>
+      <a href="https://github.com/KulinduRashmika/MAD_Pizza-Mania" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project">
+      <h3>Paradise Lanka Holidays</h3>
+      <p>
+        Fully customized WordPress website for a Sri Lankan travel company,
+        optimized for performance and responsive design.
+      </p>
+      <a href="https://paradiselkholidays.com/" target="_blank">Live Website</a>
+    </div>
+
+    <div class="project">
+      <h3>Omik Distribute Management System</h3>
+      <p>
+        Product, customer, and order management system improving business
+        workflow and data organization.
+      </p>
+      <a href="https://github.com/KulinduRashmika/Omik-distribute-Management-System-1st-year-Final-proj-" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project">
+      <h3>Library Management System</h3>
+      <p>
+        Full-stack system to manage books, members, issue & return tracking,
+        inventory updates, and real-time dashboard using REST APIs.
+      </p>
+      <a href="https://github.com/KulinduRashmika/Library-manangement-system" target="_blank">
+        View on GitHub
+      </a>
+    </div>
+
+    <div class="project">
+      <h3>Finance Management App</h3>
+      <p>
+        Application to track income, expenses, budgets, and financial activity
+        with a user-friendly interface.
+      </p>
+      <a href="https://github.com/KulinduRashmika/FinanceManagementApp" target="_blank">
+        View on GitHub
+      </a>
+    </div>
+
   </div>
+</div>
+
 
   <div class="card">
     <h2>Contact Me</h2>
@@ -276,7 +348,8 @@
     </form>
 
     <p style="margin-top:15px;color:var(--accent);text-align:center;">
-      📞 +94 702002700 <br>
+      📞 <a href="https://wa.me/94702002700" style="color:var(--primary);">+94 70 200 2700</a><br>
+      💼 <a href="https://www.linkedin.com/in/kulindu-rashmika-9330b6368/" target="_blank">LinkedIn Profile</a><br>
       🔗 <a href="https://github.com/KulinduRashmika" target="_blank">GitHub Profile</a>
     </p>
   </div>
@@ -326,4 +399,3 @@
 
 </body>
 </html>
-
